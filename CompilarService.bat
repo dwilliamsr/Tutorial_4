@@ -1,0 +1,1 @@
+javac -d C:\tutorial4\universidad\ C:\tutorial4\src\servicio\ProfesorDTO.java C:\tutorial4\src\servicio\ProfesorService.java C:\tutorial4\src\servicio\Universidad.java

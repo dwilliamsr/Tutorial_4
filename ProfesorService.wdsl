@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://service" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://servicio" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax21="http://servicio/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://servicio">
+    <wsdl:types>
+        <xs:schema xmlns:ax22="http://servicio/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service">
+            <xs:import namespace="http://servicio/xsd"/>
+            <xs:element name="findAllProfesor">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findAllProfesorResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax21:ProfesorDTO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateProfesor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="titulo" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="area" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findProfesor">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="findProfesorResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax21:ProfesorDTO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://servicio/xsd">
+            <xs:complexType name="ProfesorDTO">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="area" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cedula" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="titulo" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="findProfesorRequest">
+        <wsdl:part name="parameters" element="ns:findProfesor"/>
+    </wsdl:message>
+    <wsdl:message name="findProfesorResponse">
+        <wsdl:part name="parameters" element="ns:findProfesorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateProfesorRequest">
+        <wsdl:part name="parameters" element="ns:updateProfesor"/>
+    </wsdl:message>
+    <wsdl:message name="findAllProfesorRequest">
+        <wsdl:part name="parameters" element="ns:findAllProfesor"/>
+    </wsdl:message>
+    <wsdl:message name="findAllProfesorResponse">
+        <wsdl:part name="parameters" element="ns:findAllProfesorResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="UniversidadServicePortType">
+        <wsdl:operation name="findProfesor">
+            <wsdl:input message="tns:findProfesorRequest" wsaw:Action="urn:findProfesor"/>
+            <wsdl:output message="tns:findProfesorResponse" wsaw:Action="urn:findProfesorResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateProfesor">
+            <wsdl:input message="tns:updateProfesorRequest" wsaw:Action="urn:updateProfesor"/>
+        </wsdl:operation>
+        <wsdl:operation name="findAllProfesor">
+            <wsdl:input message="tns:findAllProfesorRequest" wsaw:Action="urn:findAllProfesor"/>
+            <wsdl:output message="tns:findAllProfesorResponse" wsaw:Action="urn:findAllProfesorResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="UniversidadServiceSoap11Binding" type="tns:UniversidadServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="findProfesor">
+            <soap:operation soapAction="urn:findProfesor" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateProfesor">
+            <soap:operation soapAction="urn:updateProfesor" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="findAllProfesor">
+            <soap:operation soapAction="urn:findAllProfesor" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="UniversidadServiceSoap12Binding" type="tns:UniversidadServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="findProfesor">
+            <soap12:operation soapAction="urn:findProfesor" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateProfesor">
+            <soap12:operation soapAction="urn:updateProfesor" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="findAllProfesor">
+            <soap12:operation soapAction="urn:findAllProfesor" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="UniversidadServiceHttpBinding" type="tns:UniversidadServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="findProfesor">
+            <http:operation location="findProfesor"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateProfesor">
+            <http:operation location="updateProfesor"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="findAllProfesor">
+            <http:operation location="findAllProfesor"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="UniversidadService">
+        <wsdl:port name="UniversidadServiceHttpSoap11Endpoint" binding="tns:UniversidadServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/Universidad"/>
+        </wsdl:port>
+        <wsdl:port name="UniversidadServiceHttpSoap12Endpoint" binding="tns:UniversidadServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/Universidad"/>
+        </wsdl:port>
+        <wsdl:port name="UniversidadServiceHttpEndpoint" binding="tns:UniversidadServiceHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/Universidad"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
